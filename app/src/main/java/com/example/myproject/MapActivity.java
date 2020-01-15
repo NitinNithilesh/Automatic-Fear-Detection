@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.widget.TextView;
 
 public class MapActivity extends AppCompatActivity implements LocationListener {
@@ -26,7 +27,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
         textView=(TextView)findViewById(R.id.id_textview);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        /*if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    Activity#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -35,7 +36,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
             // to handle the case where the user grants the permission. See the documentation
             // for Activity#requestPermissions for more details.
             return;
-        }
+        }*/
         Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
 
         onLocationChanged(location);
@@ -46,6 +47,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
         double longitude=location.getLongitude();
         double latitude=location.getLatitude();
         textView.setText("Longitude : " +longitude+"\n" + "Latitude : " +latitude);
+        sendSMS();
     }
 
     @Override
@@ -61,5 +63,14 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    public void sendSMS()
+    {
+        SmsManager sm = SmsManager.getDefault();
+        //String number = eTextMblNumber.getText().toString();
+        //String msg = eTextMsg.getText().toString();
+        String msg = textView.getText().toString();
+        sm.sendTextMessage("9487813680", null, msg, null, null);
     }
 }
