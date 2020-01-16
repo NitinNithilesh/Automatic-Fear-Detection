@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 
+import java.util.ResourceBundle;
+
 public class HomeActivity extends MainActivity implements OnClickListener{
 
     Button emergency,view_pdata,view_profile,update_profile,update_enumber;
@@ -51,7 +53,15 @@ public class HomeActivity extends MainActivity implements OnClickListener{
         if(view == emergency)
         {
             final Context context = this;
+//            Intent intent = new Intent(context, MapActivity.class);
+//            startActivity(intent);
+            //final Context context = this;
             Intent intent = new Intent(context, MapActivity.class);
+            //EditText phone = (EditText) findViewById(R.id.phone);
+//            String phone=phone;
+//            Bundle bundle = new Bundle();
+//            bundle.putString("phone_number", phone);
+//            intent.putExtras(bundle);
             startActivity(intent);
         }
     }

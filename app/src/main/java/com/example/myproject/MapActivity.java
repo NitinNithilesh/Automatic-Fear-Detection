@@ -17,12 +17,15 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.SmsManager;
 import android.widget.TextView;
 
 public class MapActivity extends AppCompatActivity{
+
+    String num1,num2,num3,num4,user_log;
 
     private static final int REQUEST_LOCATION=1;
 
@@ -100,49 +103,77 @@ public class MapActivity extends AppCompatActivity{
                     {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
         }
         else{
+            db=openOrCreateDatabase("project", Context.MODE_PRIVATE, null);
 
-            Location LocationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            Location LocationNetwork = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            Location LocationPassive = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            Cursor g=db.rawQuery("SELECT * FROM user_log",null);
+            if(g.moveToNext()) {
+                String user_log = g.getString(0);
+                //showMessage("success", user_log);
 
-            if(LocationGps != null)
-            {
-                double lat = LocationGps.getLatitude();
-                double longi = LocationGps.getLongitude();
+                Cursor c = db.rawQuery("SELECT number_1 FROM enumber WHERE mobile='" + user_log + "'", null);
+                //Cursor c = db.rawQuery("SELECT number_1 FROM enumber WHERE mobile=9487813680", null);
+                Cursor d = db.rawQuery("SELECT number_2 FROM enumber WHERE mobile='" + user_log + "'", null);
+                Cursor e = db.rawQuery("SELECT number_3 FROM enumber WHERE mobile='" + user_log + "'", null);
+                Cursor f = db.rawQuery("SELECT number_4 FROM enumber WHERE mobile='" + user_log + "'", null);
 
-                latitude = String.valueOf(lat);
-                longitude = String.valueOf(longi);
+                if (c.moveToNext() && d.moveToNext() && e.moveToNext() && f.moveToNext()) {
+                    String num1 = c.getString(c.getColumnIndex("number_1"));
+                    String num2 = d.getString(d.getColumnIndex("number_2"));
+                    String num3 = e.getString(e.getColumnIndex("number_3"));
+                    String num4 = f.getString(f.getColumnIndex("number_4"));
 
-                textView.setText("Your Location : "+"\n"+"Latitude : "+latitude+"\n"+"Longitude"+longitude);
-                sendSMS();
-            }
-            else if(LocationNetwork!=null)
-            {
-                double lat = LocationNetwork.getLatitude();
-                double longi = LocationNetwork.getLongitude();
 
-                latitude = String.valueOf(lat);
-                longitude = String.valueOf(longi);
+                    Location LocationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    Location LocationNetwork = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    Location LocationPassive = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
 
-                textView.setText("Your Location : "+"\n"+"Latitude : "+latitude+"\n"+"Longitude"+longitude);
-                sendSMS();
-            }
-            else if(LocationPassive!=null)
-            {
-                double lat = LocationPassive.getLatitude();
-                double longi = LocationPassive.getLongitude();
+                    if (LocationGps != null) {
+                        double lat = LocationGps.getLatitude();
+                        double longi = LocationGps.getLongitude();
 
-                latitude = String.valueOf(lat);
-                longitude = String.valueOf(longi);
+                        latitude = String.valueOf(lat);
+                        longitude = String.valueOf(longi);
 
-                textView.setText("Your Location : "+"\n"+"Latitude : "+latitude+"\n"+"Longitude"+longitude);
-                sendSMS();
-            }
-            else
-            {
-                Toast.makeText(this, "GPS not found", Toast.LENGTH_SHORT).show();
-            }
-        }
+                        textView.setText("Your Location : " + "\n" + "Latitude : " + latitude + "\n" + "Longitude" + longitude);
+                        SmsManager sm = SmsManager.getDefault();
+                        String msg = textView.getText().toString();
+                        sm.sendTextMessage(num1, null, msg, null, null);
+                        sm.sendTextMessage(num2, null, msg, null, null);
+                        sm.sendTextMessage(num3, null, msg, null, null);
+                        sm.sendTextMessage(num4, null, msg, null, null);
+                    } else if (LocationNetwork != null) {
+                        double lat = LocationNetwork.getLatitude();
+                        double longi = LocationNetwork.getLongitude();
+
+                        latitude = String.valueOf(lat);
+                        longitude = String.valueOf(longi);
+
+                        textView.setText("Your Location : " + "\n" + "Latitude : " + latitude + "\n" + "Longitude" + longitude);
+                        SmsManager sm = SmsManager.getDefault();
+                        String msg = textView.getText().toString();
+                        sm.sendTextMessage(num1, null, msg, null, null);
+                        sm.sendTextMessage(num2, null, msg, null, null);
+                        sm.sendTextMessage(num3, null, msg, null, null);
+                        sm.sendTextMessage(num4, null, msg, null, null);
+                    } else if (LocationPassive != null) {
+                        double lat = LocationPassive.getLatitude();
+                        double longi = LocationPassive.getLongitude();
+
+                        latitude = String.valueOf(lat);
+                        longitude = String.valueOf(longi);
+
+                        textView.setText("Your Location : " + "\n" + "Latitude : " + latitude + "\n" + "Longitude" + longitude);
+                        SmsManager sm = SmsManager.getDefault();
+                        String msg = textView.getText().toString();
+                        sm.sendTextMessage(num1, null, msg, null, null);
+                        sm.sendTextMessage(num2, null, msg, null, null);
+                        sm.sendTextMessage(num3, null, msg, null, null);
+                        sm.sendTextMessage(num4, null, msg, null, null);
+                    } else {
+                        Toast.makeText(this, "GPS not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }}
     }
 
     private void OnGPS() {
@@ -189,12 +220,21 @@ public class MapActivity extends AppCompatActivity{
 //
 //    }
 //
-    public void sendSMS()
+//    public void sendSMS()
+//    {
+//        SmsManager sm = SmsManager.getDefault();
+//        String msg = textView.getText().toString();
+//        sm.sendTextMessage(num1, null, msg, null, null);
+//        sm.sendTextMessage(num2, null, msg, null, null);
+//        sm.sendTextMessage(num3, null, msg, null, null);
+//        sm.sendTextMessage(num4, null, msg, null, null);
+//    }
+    public void showMessage(String title,String message)
     {
-        SmsManager sm = SmsManager.getDefault();
-        //String number = eTextMblNumber.getText().toString();
-        //String msg = eTextMsg.getText().toString();
-        String msg = textView.getText().toString();
-        sm.sendTextMessage("9487813680", null, msg, null, null);
+        android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 }
