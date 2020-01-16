@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
@@ -32,6 +33,7 @@ public class loginActivity extends MainActivity implements OnClickListener {
         login.setOnClickListener(this);
 
         db=openOrCreateDatabase("project", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS user_log(phone VARCHAR);");
     }
 
     public void onClick(View view)
@@ -47,6 +49,7 @@ public class loginActivity extends MainActivity implements OnClickListener {
             Cursor c=db.rawQuery("SELECT * FROM user WHERE phone='"+phone.getText()+"'", null);
             if(c.moveToNext())
             {
+                db.execSQL("INSERT INTO user_log VALUES('"+phone.getText()+"');");
                 showMessage("Success", "Login Successful");
                 final Context context = this;
                 Intent intent = new Intent(context, HomeActivity.class);
