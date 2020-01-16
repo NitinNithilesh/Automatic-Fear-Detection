@@ -219,7 +219,7 @@ public class MapActivity extends AppCompatActivity{
 //    public void onProviderDisabled(String provider) {
 //
 //    }
-//
+
 //    public void sendSMS()
 //    {
 //        SmsManager sm = SmsManager.getDefault();
