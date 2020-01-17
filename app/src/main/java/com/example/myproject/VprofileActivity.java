@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.database.Cursor;
+import android.widget.Toast;
 
 public class VprofileActivity extends MainActivity implements OnClickListener{
 
@@ -36,24 +37,29 @@ public class VprofileActivity extends MainActivity implements OnClickListener{
     {
         if(view == vprofile)
         {
-            Cursor c=db.rawQuery("SELECT * FROM user WHERE phone='"+profile.getText()+"'", null);
-            Cursor d=db.rawQuery("SELECT * FROM enumber WHERE mobile='"+profile.getText()+"'", null);
-            if(c.getCount()==0 || d.getCount()==0)
-            {
-                showMessage("Error", "No records found");
+            if(profile.getText().toString().length()<=10) {
+                Cursor c = db.rawQuery("SELECT * FROM user WHERE phone='" + profile.getText() + "'", null);
+                Cursor d = db.rawQuery("SELECT * FROM enumber WHERE mobile='" + profile.getText() + "'", null);
+                if (c.getCount() == 0 || d.getCount() == 0) {
+                    Toast.makeText(this, "Please Enter a Registered Mobile Number", Toast.LENGTH_SHORT).show();
+                    //showMessage("Error", "No records found");
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                while (c.moveToNext() && d.moveToNext()) {
+                    buffer.append("Name : " + c.getString(0) + "\n\n");
+                    buffer.append("Mobile : " + c.getString(1) + "\n\n");
+                    buffer.append("Emergency Number 1 : " + d.getString(1) + "\n\n");
+                    buffer.append("Emergency Number 2 : " + d.getString(2) + "\n\n");
+                    buffer.append("Emergency Number 3 : " + d.getString(3) + "\n\n");
+                    buffer.append("Emergency Number 4 : " + d.getString(4) + "\n\n");
+                }
+                showMessage("Your Profile", buffer.toString());
+            }
+            else{
+                Toast.makeText(this, "Please Enter a Valid Mobile Number", Toast.LENGTH_SHORT).show();
                 return;
             }
-            StringBuffer buffer=new StringBuffer();
-            while(c.moveToNext() && d.moveToNext())
-            {
-                buffer.append("Name: "+c.getString(0)+"\n\n");
-                buffer.append("Mobile: "+c.getString(1)+"\n\n");
-                buffer.append("Emergency Number 1: "+d.getString(1)+"\n\n");
-                buffer.append("Emergency Number 2: "+d.getString(2)+"\n\n");
-                buffer.append("Emergency Number 3: "+d.getString(3)+"\n\n");
-                buffer.append("Emergency Number 4: "+d.getString(4)+"\n\n");
-            }
-            showMessage("Your Profile", buffer.toString());
         }
         if(view == home)
         {

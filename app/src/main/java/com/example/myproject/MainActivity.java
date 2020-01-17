@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnClickListener
@@ -42,17 +43,27 @@ public class MainActivity extends Activity implements OnClickListener
         if(view==Insert)
         {
             // Checking for empty fields
-            if(name.getText().toString().trim().length()==0||
-                    phone.getText().toString().trim().length()==0||
-                    pwd.getText().toString().trim().length()==0)
+            if(name.getText().toString().trim().length()==0|| phone.getText().toString().trim().length()==0|| pwd.getText().toString().trim().length()==0)
             {
-                showMessage("Error", "Please enter all values");
+                Toast.makeText(this, "Please Enter all the Values", Toast.LENGTH_SHORT).show();
+                //showMessage("Error", "Please enter all values");
                 return;
             }
-            db.execSQL("INSERT INTO user VALUES('"+name.getText()+"','"+phone.getText()+
-                    "','"+pwd.getText()+"');");
-            showMessage("Success", "Record added");
-            clearText();
+            else if(phone.getText().toString().length()==10) {
+                db.execSQL("INSERT INTO user VALUES('" + name.getText() + "','" + phone.getText() +
+                        "','" + pwd.getText() + "');");
+                Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                //showMessage("Success", "Record added");
+                clearText();
+                final Context context = this;
+                Intent intent = new Intent(context, loginActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(this, "Please Enter a Valid Mobile Number", Toast.LENGTH_SHORT).show();
+                //showMessage("Error","Please Enter a Valid Mobile Number");
+                return;
+            }
         }
         if(view == login)
         {

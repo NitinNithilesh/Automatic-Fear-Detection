@@ -15,8 +15,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="160dp"
+        android:layout_x="51dp"
+        android:layout_y="164dp"
         android:text="Number 1 :"
         android:textSize="20sp" />
 
@@ -48,8 +48,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="210dp"
+        android:layout_x="51dp"
+        android:layout_y="212dp"
         android:text="Number 2 :"
         android:textSize="20sp" />
 
@@ -65,7 +65,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
+        android:layout_x="52dp"
         android:layout_y="262dp"
         android:text="Number 3 :"
         android:textSize="20sp" />
@@ -82,8 +82,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="314dp"
+        android:layout_x="54dp"
+        android:layout_y="316dp"
         android:text="Number 4 :"
         android:textSize="20sp" />
 

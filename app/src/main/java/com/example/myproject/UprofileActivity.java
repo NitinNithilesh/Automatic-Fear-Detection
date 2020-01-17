@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.database.Cursor;
+import android.widget.Toast;
 
 public class UprofileActivity  extends MainActivity implements OnClickListener{
 
@@ -51,45 +52,62 @@ public class UprofileActivity  extends MainActivity implements OnClickListener{
                 showMessage("Error", "Please Enter all the Details");
                 return;
             }*/
-            if(num.getText().toString().trim().length()!=0 && name.getText().toString().trim().length()!=0)
-            {
-                Cursor c=db.rawQuery("SELECT * FROM user WHERE phone='"+num.getText()+"'", null);
-                if(c.moveToFirst()) {
-                    db.execSQL("UPDATE user SET username='" + name.getText() + "' WHERE phone='"+num.getText()+"'");
-                    showMessage("Success", "Name Updated");
+            if(num.getText().toString().trim().length()==10) {
+                if (num.getText().toString().trim().length() != 0 && name.getText().toString().trim().length() != 0) {
+                    Cursor c = db.rawQuery("SELECT * FROM user WHERE phone='" + num.getText() + "'", null);
+                    if (c.moveToFirst()) {
+                        db.execSQL("UPDATE user SET username='" + name.getText() + "' WHERE phone='" + num.getText() + "'");
+                        Toast.makeText(this, "Name Updated", Toast.LENGTH_SHORT).show();
+                        //showMessage("Success", "Name Updated");
+                    }
+                }
+                if (num.getText().toString().trim().length() != 0 && enum1.getText().toString().trim().length() != 0 && enum1.getText().toString().trim().length()==10) {
+                    Cursor c = db.rawQuery("SELECT * FROM enumber WHERE mobile='" + num.getText() + "'", null);
+                    if (c.moveToFirst()) {
+                        db.execSQL("UPDATE enumber SET number_1='" + enum1.getText() + "' WHERE mobile='" + num.getText() + "'");
+                        Toast.makeText(this, "Emergency Number 1 Updated", Toast.LENGTH_SHORT).show();
+                        //showMessage("Success", "Emergency Number 1 Updated");
+                    }
+                }
+                else{
+                    Toast.makeText(this, "Please Enter a Valid Emergency Number", Toast.LENGTH_SHORT).show();
+                }
+                if (num.getText().toString().trim().length() != 0 && enum2.getText().toString().trim().length() != 0 && enum2.getText().toString().trim().length()==10) {
+                    Cursor c = db.rawQuery("SELECT * FROM enumber WHERE mobile='" + num.getText() + "'", null);
+                    if (c.moveToFirst()) {
+                        db.execSQL("UPDATE enumber SET number_2='" + enum2.getText() + "' WHERE mobile='" + num.getText() + "'");
+                        Toast.makeText(this, "Emergency Number 2 Updated", Toast.LENGTH_SHORT).show();
+                        //showMessage("Success", "Emergency Number 2 Updated");
+                    }
+                }
+                else{
+                    Toast.makeText(this, "Please Enter a Valid Emergency Number", Toast.LENGTH_SHORT).show();
+                }
+                if (num.getText().toString().trim().length() != 0 && enum3.getText().toString().trim().length() != 0 && enum3.getText().toString().trim().length()==10) {
+                    Cursor c = db.rawQuery("SELECT * FROM enumber WHERE mobile='" + num.getText() + "'", null);
+                    if (c.moveToFirst()) {
+                        db.execSQL("UPDATE enumber SET number_3='" + enum3.getText() + "' WHERE mobile='" + num.getText() + "'");
+                        Toast.makeText(this, "Emergency Number 3 Updated", Toast.LENGTH_SHORT).show();
+                        //showMessage("Success", "Emergency Number 3 Updated");
+                    }
+                }
+                else{
+                    Toast.makeText(this, "Please Enter a Valid Emergency Number", Toast.LENGTH_SHORT).show();
+                }
+                if (num.getText().toString().trim().length() != 0 && enum4.getText().toString().trim().length() != 0 && enum4.getText().toString().trim().length()==10) {
+                    Cursor c = db.rawQuery("SELECT * FROM enumber WHERE mobile='" + num.getText() + "'", null);
+                    if (c.moveToFirst()) {
+                        db.execSQL("UPDATE enumber SET number_4='" + enum4.getText() + "' WHERE mobile='" + num.getText() + "'");
+                        Toast.makeText(this, "Emergency Number 4 Updated", Toast.LENGTH_SHORT).show();
+                        //showMessage("Success", "Emergency Number 4 Updated");
+                    }
+                }
+                else{
+                    Toast.makeText(this, "Please Enter a Valid Emergency Number", Toast.LENGTH_SHORT).show();
                 }
             }
-            if(num.getText().toString().trim().length()!=0 && enum1.getText().toString().trim().length()!=0)
-            {
-                Cursor c=db.rawQuery("SELECT * FROM enumber WHERE mobile='"+num.getText()+"'", null);
-                if(c.moveToFirst()) {
-                    db.execSQL("UPDATE enumber SET number_1='" + enum1.getText() + "' WHERE mobile='"+num.getText()+"'");
-                    showMessage("Success", "Emergency Number 1 Updated");
-                }
-            }
-            if(num.getText().toString().trim().length()!=0 && enum2.getText().toString().trim().length()!=0)
-            {
-                Cursor c=db.rawQuery("SELECT * FROM enumber WHERE mobile='"+num.getText()+"'", null);
-                if(c.moveToFirst()) {
-                    db.execSQL("UPDATE enumber SET number_2='" + enum2.getText() + "' WHERE mobile='"+num.getText()+"'");
-                    showMessage("Success", "Emergency Number 2 Updated");
-                }
-            }
-            if(num.getText().toString().trim().length()!=0 && enum3.getText().toString().trim().length()!=0)
-            {
-                Cursor c=db.rawQuery("SELECT * FROM enumber WHERE mobile='"+num.getText()+"'", null);
-                if(c.moveToFirst()) {
-                    db.execSQL("UPDATE enumber SET number_3='" + enum3.getText() + "' WHERE mobile='"+num.getText()+"'");
-                    showMessage("Success", "Emergency Number 3 Updated");
-                }
-            }
-            if(num.getText().toString().trim().length()!=0 && enum4.getText().toString().trim().length()!=0)
-            {
-                Cursor c = db.rawQuery("SELECT * FROM enumber WHERE mobile='" + num.getText() + "'", null);
-                if (c.moveToFirst()) {
-                    db.execSQL("UPDATE enumber SET number_4='" + enum4.getText() + "' WHERE mobile='"+num.getText()+"'");
-                    showMessage("Success", "Emergency Number 4 Updated");
-                }
+            else{
+                Toast.makeText(this, "Please Enter a Valid Mobile Number", Toast.LENGTH_SHORT).show();
             }
         }
         if(view == home)

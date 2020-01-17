@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class EnumberActivity extends MainActivity implements OnClickListener {
 
@@ -46,18 +47,24 @@ public class EnumberActivity extends MainActivity implements OnClickListener {
         }
         if(view == enter)
         {
-            if(rnum.getText().toString().trim().length()==0||
-                    num1.getText().toString().trim().length()==0||
-                    num2.getText().toString().trim().length()==0||
-                    num3.getText().toString().trim().length()==0||
-                    num4.getText().toString().trim().length()==0)
-            {
-                showMessage("Error", "Please enter all values");
-                return;
+            if(rnum.getText().toString().trim().length()==10 && num1.getText().toString().trim().length()==10 && num2.getText().toString().trim().length()==10 && num3.getText().toString().trim().length()==10 && num4.getText().toString().trim().length()==10) {
+                if (rnum.getText().toString().trim().length() == 0 ||
+                        num1.getText().toString().trim().length() == 0 ||
+                        num2.getText().toString().trim().length() == 0 ||
+                        num3.getText().toString().trim().length() == 0 ||
+                        num4.getText().toString().trim().length() == 0) {
+                    //showMessage("Error", "Please enter all values");
+                    Toast.makeText(this, "Please Enter all the Values", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                db.execSQL("INSERT INTO enumber VALUES('" + rnum.getText() + "','" + num1.getText() + "','" + num2.getText() + "','" + num3.getText() + "','" + num4.getText() + "');");
+                Toast.makeText(this, "Emergency Numbers Added", Toast.LENGTH_SHORT).show();
+                //showMessage("Success", "Emergency Numbers Added");
+                clearText();
             }
-            db.execSQL("INSERT INTO enumber VALUES('"+rnum.getText()+"','"+num1.getText()+ "','"+num2.getText()+"','"+num3.getText()+"','"+num4.getText()+"');");
-            showMessage("Success", "Emergency Numbers Added");
-            clearText();
+            else{
+                Toast.makeText(this, "Please Enter a Valid Mobile Number or Emergency Number", Toast.LENGTH_SHORT).show();
+            }
         }
     }
     public void showMessage(String title,String message)
