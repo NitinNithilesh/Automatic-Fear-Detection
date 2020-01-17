@@ -46,12 +46,12 @@ public class VprofileActivity extends MainActivity implements OnClickListener{
             StringBuffer buffer=new StringBuffer();
             while(c.moveToNext() && d.moveToNext())
             {
-                buffer.append("Name: "+c.getString(0)+"\n\n");
-                buffer.append("Mobile: "+c.getString(1)+"\n\n");
-                buffer.append("Emergency Number 1: "+d.getString(1)+"\n\n");
-                buffer.append("Emergency Number 2: "+d.getString(2)+"\n\n");
-                buffer.append("Emergency Number 3: "+d.getString(3)+"\n\n");
-                buffer.append("Emergency Number 4: "+d.getString(4)+"\n\n");
+                buffer.append("Name : "+c.getString(0)+"\n\n");
+                buffer.append("Mobile : "+c.getString(1)+"\n\n");
+                buffer.append("Emergency Number 1 : "+d.getString(1)+"\n\n");
+                buffer.append("Emergency Number 2 : "+d.getString(2)+"\n\n");
+                buffer.append("Emergency Number 3 : "+d.getString(3)+"\n\n");
+                buffer.append("Emergency Number 4 : "+d.getString(4)+"\n\n");
             }
             showMessage("Your Profile", buffer.toString());
         }

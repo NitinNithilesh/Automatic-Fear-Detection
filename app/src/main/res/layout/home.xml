@@ -6,8 +6,8 @@
         android:id="@+id/update_profile"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
-        android:layout_x="191dp"
-        android:layout_y="446dp"
+        android:layout_x="195dp"
+        android:layout_y="392dp"
         android:onClick="onClick"
         android:text="Update Profile"
         android:textSize="30dp" />
@@ -17,7 +17,7 @@
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_x="19dp"
-        android:layout_y="446dp"
+        android:layout_y="393dp"
         android:onClick="onClick"
         android:text="View Profile"
         android:textSize="30dp" />
@@ -25,19 +25,19 @@
     <Button
         android:id="@+id/update_enumber"
         android:layout_width="303dp"
-        android:layout_height="143dp"
+        android:layout_height="wrap_content"
         android:layout_x="30dp"
         android:layout_y="110dp"
         android:onClick="onClick"
-        android:text="Update Emergency Numbers"
+        android:text="Enter Emergency Numbers"
         android:textSize="30dp" />
 
     <Button
         android:id="@+id/view_pdata"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
-        android:layout_x="80dp"
-        android:layout_y="284dp"
+        android:layout_x="88dp"
+        android:layout_y="229dp"
         android:onClick="onClick"
         android:text="View Personal Data"
         android:textSize="30dp" />

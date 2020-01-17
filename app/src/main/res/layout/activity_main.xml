@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="115dp"
-        android:layout_y="31dp"
+        android:layout_marginTop="32dp"
+        android:layout_x="129dp"
+        android:layout_y="35dp"
         android:text="Sign Up"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="154dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,8 +37,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="160dp"
+        android:layout_x="61dp"
+        android:layout_y="166dp"
         android:text=" Mobile :"
         android:textSize="20sp" />
 
@@ -48,8 +54,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="210dp"
+        android:layout_x="40dp"
+        android:layout_y="215dp"
         android:text="Password :"
         android:textSize="20sp" />
 
@@ -59,25 +65,26 @@
         android:layout_height="wrap_content"
         android:layout_x="175dp"
         android:layout_y="200dp"
-        android:inputType="number|text"
+        android:inputType="textPassword"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/Insert"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="94dp"
+        android:layout_x="37dp"
         android:layout_y="304dp"
         android:text="SIGN UP"
         android:textSize="30dp" />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="151dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="95dp"
-        android:layout_y="395dp"
+        android:layout_x="207dp"
+        android:layout_y="306dp"
         android:onClick="onClick"
-        android:text="LOGIN" />
+        android:text="LOGIN"
+        android:textSize="30dp" />
 
 </AbsoluteLayout>
