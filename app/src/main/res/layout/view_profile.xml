@@ -1,51 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/absoluteLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/home"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="130dp"
-        android:layout_y="297dp"
+        android:layout_marginTop="278dp"
+        android:layout_marginBottom="405dp"
         android:onClick="onClick"
-        android:text="home"
-        android:textSize="30dp" />
+        android:text="Home"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/vprofile"
-        android:layout_width="236dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="86dp"
-        android:layout_y="214dp"
+        android:layout_marginTop="214dp"
+        android:layout_marginBottom="469dp"
         android:onClick="onClick"
         android:text="View Profile"
-        android:textSize="30dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="129dp"
-        android:layout_y="32dp"
-        android:text="PROFILE"
-        android:textSize="30sp" />
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="658dp"
+        android:text="View Profile"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="48dp"
-        android:layout_y="99dp"
-        android:text="Enter Your Mobile Number to View Your Profile" />
+        android:layout_marginTop="99dp"
+        android:layout_marginBottom="613dp"
+        android:text="Enter Your Mobile Number to View Your Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="95dp"
-        android:layout_y="145dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginBottom="541dp"
         android:ems="10"
         android:inputType="number"
-        android:text="" />
-</AbsoluteLayout>
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,68 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/absoluteLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="141dp"
-        android:layout_y="39dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="181dp"
+        android:layout_marginBottom="638dp"
         android:text="Login"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="73dp"
-        android:layout_y="166dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="133dp"
+        android:layout_marginEnd="255dp"
+        android:layout_marginBottom="527dp"
         android:text="Phone :"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/phone"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_x="175dp"
-        android:layout_y="150dp"
+        android:layout_width="170dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="122dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="527dp"
         android:inputType="number"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="41dp"
-        android:layout_y="214dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginEnd="255dp"
+        android:layout_marginBottom="489dp"
         android:text="Password :"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/pwd"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_x="175dp"
-        android:layout_y="200dp"
+        android:layout_width="170dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="489dp"
         android:inputType="text|textPassword"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_x="25dp"
-        android:layout_y="300dp"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginBottom="389dp"
         android:onClick="onClick"
-        android:text="LOGIN"
-        android:textSize="30dp" />
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signup"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_x="200dp"
-        android:layout_y="300dp"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="206dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="389dp"
         android:onClick="onClick"
-        android:text="Sign up"
-        android:textSize="30dp" />
+        android:text="Register"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</AbsoluteLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

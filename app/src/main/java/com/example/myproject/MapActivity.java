@@ -134,13 +134,14 @@ public class MapActivity extends AppCompatActivity{
                         latitude = String.valueOf(lat);
                         longitude = String.valueOf(longi);
 
-                        textView.setText("Your Location : " + "\n" + "Latitude : " + latitude + "\n" + "Longitude" + longitude);
+                        textView.setText("Latitude : " + latitude + "\n" + "Longitude :" + longitude);
                         SmsManager sm = SmsManager.getDefault();
                         String msg = textView.getText().toString();
                         sm.sendTextMessage(num1, null, msg, null, null);
                         sm.sendTextMessage(num2, null, msg, null, null);
                         sm.sendTextMessage(num3, null, msg, null, null);
                         sm.sendTextMessage(num4, null, msg, null, null);
+                        Toast.makeText(this, "Location SMS Sent to Emergency Numbers", Toast.LENGTH_SHORT).show();
                     } else if (LocationNetwork != null) {
                         double lat = LocationNetwork.getLatitude();
                         double longi = LocationNetwork.getLongitude();
@@ -148,13 +149,14 @@ public class MapActivity extends AppCompatActivity{
                         latitude = String.valueOf(lat);
                         longitude = String.valueOf(longi);
 
-                        textView.setText("Your Location : " + "\n" + "Latitude : " + latitude + "\n" + "Longitude" + longitude);
+                        textView.setText("Latitude : " + latitude + "\n" + "Longitude :" + longitude);
                         SmsManager sm = SmsManager.getDefault();
                         String msg = textView.getText().toString();
                         sm.sendTextMessage(num1, null, msg, null, null);
                         sm.sendTextMessage(num2, null, msg, null, null);
                         sm.sendTextMessage(num3, null, msg, null, null);
                         sm.sendTextMessage(num4, null, msg, null, null);
+                        Toast.makeText(this, "Location SMS Sent to Emergency Numbers", Toast.LENGTH_SHORT).show();
                     } else if (LocationPassive != null) {
                         double lat = LocationPassive.getLatitude();
                         double longi = LocationPassive.getLongitude();
@@ -162,13 +164,14 @@ public class MapActivity extends AppCompatActivity{
                         latitude = String.valueOf(lat);
                         longitude = String.valueOf(longi);
 
-                        textView.setText("Your Location : " + "\n" + "Latitude : " + latitude + "\n" + "Longitude" + longitude);
+                        textView.setText("Latitude : " + latitude + "\n" + "Longitude :" + longitude);
                         SmsManager sm = SmsManager.getDefault();
                         String msg = textView.getText().toString();
                         sm.sendTextMessage(num1, null, msg, null, null);
                         sm.sendTextMessage(num2, null, msg, null, null);
                         sm.sendTextMessage(num3, null, msg, null, null);
                         sm.sendTextMessage(num4, null, msg, null, null);
+                        Toast.makeText(this, "Location SMS Sent to Emergency Numbers", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(this, "GPS not found", Toast.LENGTH_SHORT).show();
                     }
@@ -229,12 +232,12 @@ public class MapActivity extends AppCompatActivity{
 //        sm.sendTextMessage(num3, null, msg, null, null);
 //        sm.sendTextMessage(num4, null, msg, null, null);
 //    }
-    public void showMessage(String title,String message)
-    {
-        android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
-    }
+//    public void showMessage(String title,String message)
+//    {
+//        android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(this);
+//        builder.setCancelable(true);
+//        builder.setTitle(title);
+//        builder.setMessage(message);
+//        builder.show();
+//    }
 }

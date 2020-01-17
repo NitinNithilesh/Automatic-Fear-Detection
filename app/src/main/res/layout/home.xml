@@ -1,58 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/absoluteLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/update_profile"
-        android:layout_width="156dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="195dp"
-        android:layout_y="392dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="483dp"
         android:onClick="onClick"
         android:text="Update Profile"
-        android:textSize="30dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/view_profile"
-        android:layout_width="155dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="19dp"
-        android:layout_y="393dp"
+        android:layout_marginTop="268dp"
+        android:layout_marginBottom="415dp"
         android:onClick="onClick"
         android:text="View Profile"
-        android:textSize="30dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/update_enumber"
-        android:layout_width="303dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="30dp"
-        android:layout_y="110dp"
+        android:layout_marginTop="487dp"
+        android:layout_marginBottom="196dp"
         android:onClick="onClick"
         android:text="Enter Emergency Numbers"
-        android:textSize="30dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/view_pdata"
-        android:layout_width="197dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="88dp"
-        android:layout_y="229dp"
+        android:layout_marginTop="411dp"
+        android:layout_marginBottom="272dp"
         android:onClick="onClick"
         android:text="View Personal Data"
-        android:textSize="30dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/emergency"
-        android:layout_width="211dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="74dp"
-        android:layout_y="26dp"
         android:onClick="onClick"
         android:text="Emergency"
-        android:textSize="30dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</AbsoluteLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
