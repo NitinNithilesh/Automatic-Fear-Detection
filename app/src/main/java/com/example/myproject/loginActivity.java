@@ -48,7 +48,7 @@ public class loginActivity extends MainActivity implements OnClickListener {
             }
             if(phone.getText().toString().length()==10) {
                 //SQLiteDatabase db=this.getReadableDatabase();
-                Cursor c = db.rawQuery("SELECT * FROM user WHERE phone='" + phone.getText() + "'", null);
+                Cursor c = db.rawQuery("SELECT * FROM user WHERE phone='" + phone.getText() + "' AND password='"+pwd.getText()+"'", null);
                 if (c.moveToNext()) {
                     db.execSQL("INSERT INTO user_log VALUES('" + phone.getText() + "');");
                     Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
