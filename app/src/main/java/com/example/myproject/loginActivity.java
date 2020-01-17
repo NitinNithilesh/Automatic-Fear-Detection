@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
+import android.widget.Toast;
 
 
 public class loginActivity extends MainActivity implements OnClickListener {
@@ -45,19 +46,24 @@ public class loginActivity extends MainActivity implements OnClickListener {
                 showMessage("Error", "Please enter all values");
                 return;
             }
-            //SQLiteDatabase db=this.getReadableDatabase();
-            Cursor c=db.rawQuery("SELECT * FROM user WHERE phone='"+phone.getText()+"'", null);
-            if(c.moveToNext())
-            {
-                db.execSQL("INSERT INTO user_log VALUES('"+phone.getText()+"');");
-                showMessage("Success", "Login Successful");
-                final Context context = this;
-                Intent intent = new Intent(context, HomeActivity.class);
-                startActivity(intent);
+            if(phone.getText().toString().length()==10) {
+                //SQLiteDatabase db=this.getReadableDatabase();
+                Cursor c = db.rawQuery("SELECT * FROM user WHERE phone='" + phone.getText() + "'", null);
+                if (c.moveToNext()) {
+                    db.execSQL("INSERT INTO user_log VALUES('" + phone.getText() + "');");
+                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
+                    //showMessage("Success", "Login Successful");
+                    final Context context = this;
+                    Intent intent = new Intent(context, HomeActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "Mobile Number or Password is wrong. Please Check It", Toast.LENGTH_SHORT).show();
+                    //showMessage("Error", "Mobile Number or Password is wrong. Please Check It");
+                    return;
+                }
             }
-            else
-            {
-                showMessage("Error", "Mobile Number or Password is wrong. Please check it");
+            else{
+                Toast.makeText(this, "Please Enter a Valid Mobile Number", Toast.LENGTH_SHORT).show();
             }
         }
         if(view == signup)
