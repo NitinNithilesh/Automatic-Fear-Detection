@@ -10,12 +10,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
+import android.widget.Toast;
 
 import java.util.ResourceBundle;
 
 public class HomeActivity extends MainActivity implements OnClickListener{
 
-    Button emergency,view_pdata,view_profile,update_profile,update_enumber;
+    Button emergency,view_pdata,view_profile,update_profile,update_enumber,logout;
+    SQLiteDatabase db;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -27,7 +29,9 @@ public class HomeActivity extends MainActivity implements OnClickListener{
         view_profile = (Button)findViewById(R.id.view_profile);
         update_enumber = (Button)findViewById(R.id.update_enumber);
         view_pdata = (Button)findViewById(R.id.view_pdata);
+        logout = (Button)findViewById(R.id.logout);
 
+        db=openOrCreateDatabase("project", Context.MODE_PRIVATE, null);
 
     }
     public void onClick(View view)
@@ -48,6 +52,14 @@ public class HomeActivity extends MainActivity implements OnClickListener{
         {
             final Context context = this;
             Intent intent = new Intent(context, UprofileActivity.class);
+            startActivity(intent);
+        }
+        if(view == logout)
+        {
+            db.execSQL("DELETE FROM user_log");
+            Toast.makeText(this, "Successfully Logged Out", Toast.LENGTH_SHORT).show();
+            final Context context = this;
+            Intent intent = new Intent(context, loginActivity.class);
             startActivity(intent);
         }
         if(view == emergency)
