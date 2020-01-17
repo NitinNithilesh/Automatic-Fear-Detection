@@ -11,9 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
 
-public class MainActivity extends Activity implements OnClickListener
+public class MainActivity extends AppCompatActivity implements OnClickListener
 {
     EditText name,phone,pwd;
     Button Insert,login;

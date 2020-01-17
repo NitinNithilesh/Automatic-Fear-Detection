@@ -43,7 +43,8 @@ public class loginActivity extends MainActivity implements OnClickListener {
         {
             if(phone.getText().toString().trim().length()==0 || pwd.getText().toString().trim().length()==0)
             {
-                showMessage("Error", "Please enter all values");
+                Toast.makeText(this, "Please Enter all the Values", Toast.LENGTH_SHORT).show();
+                //showMessage("Error", "Please enter all values");
                 return;
             }
             if(phone.getText().toString().length()==10) {
@@ -81,4 +82,10 @@ public class loginActivity extends MainActivity implements OnClickListener {
         builder.setMessage(message);
         builder.show();
     }*/
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        Toast.makeText(loginActivity.this,"Sorry You Can't Go Back. Please Login to Continue",Toast.LENGTH_LONG).show();
+        return;
+    }
 }

@@ -11,27 +11,28 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="638dp"
         android:text="Register"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="584dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="241dp"
+        android:layout_marginBottom="589dp"
         android:text="Username :"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,6 +40,7 @@
         android:id="@+id/name"
         android:layout_width="168dp"
         android:layout_height="39dp"
+        android:layout_marginStart="195dp"
         android:layout_marginTop="109dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="583dp"
@@ -46,19 +48,21 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="67dp"
-        android:layout_marginTop="161dp"
-        android:layout_marginBottom="543dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="542dp"
         android:text=" Mobile :"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,6 +70,7 @@
         android:id="@+id/phone"
         android:layout_width="168dp"
         android:layout_height="41dp"
+        android:layout_marginStart="195dp"
         android:layout_marginTop="147dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="543dp"
@@ -73,19 +78,21 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="204dp"
+        android:layout_marginEnd="242dp"
         android:layout_marginBottom="500dp"
         android:text="Password :"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,6 +100,7 @@
         android:id="@+id/pwd"
         android:layout_width="168dp"
         android:layout_height="43dp"
+        android:layout_marginStart="195dp"
         android:layout_marginTop="188dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="500dp"
@@ -100,8 +108,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Insert"
