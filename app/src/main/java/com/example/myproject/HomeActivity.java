@@ -76,5 +76,11 @@ public class HomeActivity extends MainActivity implements OnClickListener{
 //            intent.putExtras(bundle);
             startActivity(intent);
         }
+        if(view == view_pdata)
+        {
+            final Context context = this;
+            Intent intent = new Intent(context, BActivity.class);
+            startActivity(intent);
+        }
     }
 }
