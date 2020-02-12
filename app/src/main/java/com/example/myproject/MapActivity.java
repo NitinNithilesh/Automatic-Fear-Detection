@@ -134,7 +134,7 @@ public class MapActivity extends AppCompatActivity{
                         latitude = String.valueOf(lat);
                         longitude = String.valueOf(longi);
 
-                        textView.setText("Latitude : " + latitude + "\n" + "Longitude :" + longitude);
+                        textView.setText("Latitude : " + latitude + "\n" + "Longitude : " + longitude);
                         SmsManager sm = SmsManager.getDefault();
                         String msg = textView.getText().toString();
                         sm.sendTextMessage(num1, null, msg, null, null);
@@ -149,7 +149,7 @@ public class MapActivity extends AppCompatActivity{
                         latitude = String.valueOf(lat);
                         longitude = String.valueOf(longi);
 
-                        textView.setText("Latitude : " + latitude + "\n" + "Longitude :" + longitude);
+                        textView.setText("Latitude : " + latitude + "\n" + "Longitude : " + longitude);
                         SmsManager sm = SmsManager.getDefault();
                         String msg = textView.getText().toString();
                         sm.sendTextMessage(num1, null, msg, null, null);
@@ -164,7 +164,7 @@ public class MapActivity extends AppCompatActivity{
                         latitude = String.valueOf(lat);
                         longitude = String.valueOf(longi);
 
-                        textView.setText("Latitude : " + latitude + "\n" + "Longitude :" + longitude);
+                        textView.setText("Latitude : " + latitude + "\n" + "Longitude : " + longitude);
                         SmsManager sm = SmsManager.getDefault();
                         String msg = textView.getText().toString();
                         sm.sendTextMessage(num1, null, msg, null, null);
@@ -173,7 +173,7 @@ public class MapActivity extends AppCompatActivity{
                         sm.sendTextMessage(num4, null, msg, null, null);
                         Toast.makeText(this, "Location SMS Sent to Emergency Numbers", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(this, "GPS not found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Not able Find Your Location. Please Enable GPS", Toast.LENGTH_SHORT).show();
                     }
                 }
             }}
