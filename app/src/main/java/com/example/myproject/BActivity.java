@@ -12,7 +12,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
@@ -20,9 +22,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
-
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
 import androidx.core.app.ActivityCompat;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -32,8 +36,10 @@ import java.util.UUID;
 public class BActivity extends Activity {
     //    private final String DEVICE_NAME="MyBTBee";
     String num1, num2, num3, num4, user_log;
-
+    private CameraManager mCameraManager;
+    private String mCameraId;
     private static final int REQUEST_LOCATION = 1;
+    private final int REQUEST_CODE=1;
 
     private TextView textView;
     LocationManager locationManager;
@@ -169,11 +175,16 @@ public class BActivity extends Activity {
                             final String string = new String(rawBytes, "UTF-8");
                             handler.post(new Runnable() {
                                 public void run() {
-                                    textView.append(string);
-                                    sendSMS();
+                                    //textView.append(string);
+                                    textView.setText(string);
+                                    try {
+                                        sendSMS();
+                                    } catch (CameraAccessException e) {
+                                        e.printStackTrace();
+                                    }
+                                    //record_video();
                                 }
                             });
-
                         }
                     } catch (IOException ex) {
                         stopThread = true;
@@ -212,7 +223,11 @@ public class BActivity extends Activity {
         textView.setText("");
     }
 
-    public void sendSMS() {
+    public void sendSMS() throws CameraAccessException {
+            mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+            mCameraId = mCameraManager.getCameraIdList()[0];
+            mCameraManager.setTorchMode(mCameraId, true);
+
         db = openOrCreateDatabase("project", Context.MODE_PRIVATE, null);
 
         Cursor g = db.rawQuery("SELECT * FROM user_log", null);
@@ -253,30 +268,44 @@ public class BActivity extends Activity {
 
                     latitude = String.valueOf(lat);
                     longitude = String.valueOf(longi);
-
-                    textView.setText("Latitude : " + latitude + "\n" + "Longitude : " + longitude);
+                    //textView.setText("Please help I'm in a Emergency, Copy this address and search for my location in maps "+ latitude +"," + longitude);
+                    //textView.setText(latitude +"," + longitude + "\n" + "\n" +"Please copy the above numbers as such (latitude,longitude) and paste it in google maps to know their location. Please react fast as the sender is in some kind of emergency." + "\n" + "\n'" + "-- Technology is here to save you");
                     SmsManager sm = SmsManager.getDefault();
-                    String msg = textView.getText().toString();
+                    String msg = latitude +"," + longitude + "\n" + "\n" +"Please copy the above numbers as such (latitude,longitude) and paste it in google maps to know their location. Please react fast as the sender is in some kind of emergency." + "\n" + "\n" + "-- Technology is here to save you";
                     sm.sendTextMessage(num1, null, msg, null, null);
                     sm.sendTextMessage(num2, null, msg, null, null);
                     sm.sendTextMessage(num3, null, msg, null, null);
                     sm.sendTextMessage(num4, null, msg, null, null);
                     Toast.makeText(this, "Location SMS Sent to Emergency Numbers", Toast.LENGTH_SHORT).show();
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:"+num1));
+                    //callIntent.setData(Uri.parse("tel:"+num2));
+                    //callIntent.setData(Uri.parse("tel:"+num3));
+                    //callIntent.setData(Uri.parse("tel:"+num4));
+                    startActivity(callIntent);
+                    Toast.makeText(this, "Calling your Emergency Number", Toast.LENGTH_SHORT).show();
                 } else if (LocationNetwork != null) {
                     double lat = LocationNetwork.getLatitude();
                     double longi = LocationNetwork.getLongitude();
 
                     latitude = String.valueOf(lat);
                     longitude = String.valueOf(longi);
-
-                    textView.setText("Latitude : " + latitude + "\n" + "Longitude : " + longitude);
+                    //textView.setText(latitude +"," + longitude);
+                    //textView.setText(latitude +"," + longitude + "\n" + "\n" +"Please copy the above numbers as such (latitude,longitude) and paste it in google maps to know their location. Please react fast as the sender is in some kind of emergency." + "\n" + "\n'" + "-- Technology is here to save you");
                     SmsManager sm = SmsManager.getDefault();
-                    String msg = textView.getText().toString();
+                    String msg = latitude +"," + longitude + "\n" + "\n" +"Please copy the above numbers as such (latitude,longitude) and paste it in google maps to know their location. Please react fast as the sender is in some kind of emergency." + "\n" + "\n" + "-- Technology is here to save you";
                     sm.sendTextMessage(num1, null, msg, null, null);
                     sm.sendTextMessage(num2, null, msg, null, null);
                     sm.sendTextMessage(num3, null, msg, null, null);
                     sm.sendTextMessage(num4, null, msg, null, null);
                     Toast.makeText(this, "Location SMS Sent to Emergency Numbers", Toast.LENGTH_SHORT).show();
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:"+num1));
+                    //callIntent.setData(Uri.parse("tel:"+num2));
+                    //callIntent.setData(Uri.parse("tel:"+num3));
+                    //callIntent.setData(Uri.parse("tel:"+num4));
+                    startActivity(callIntent);
+                    Toast.makeText(this, "Calling your Emergency Number", Toast.LENGTH_SHORT).show();
                 } else if (LocationPassive != null) {
                     double lat = LocationPassive.getLatitude();
                     double longi = LocationPassive.getLongitude();
@@ -284,17 +313,70 @@ public class BActivity extends Activity {
                     latitude = String.valueOf(lat);
                     longitude = String.valueOf(longi);
 
-                    textView.setText("Latitude : " + latitude + "\n" + "Longitude : " + longitude);
+                    //textView.setText("Latitudeee : " + latitude + "\n" + "Longitude : " + longitude);
+                    //textView.setText(latitude +"," + longitude + "\n" + "\n" +"Please copy the above numbers as such (latitude,longitude) and paste it in google maps to know their location. Please react fast as the sender is in some kind of emergency." + "\n" + "\n'" + "-- Technology is here to save you");
                     SmsManager sm = SmsManager.getDefault();
-                    String msg = textView.getText().toString();
+                    //String msg = textView.getText().toString();
+                    String msg = latitude +"," + longitude + "\n" + "\n" +"Please copy the above numbers as such (latitude,longitude) and paste it in google maps to know their location. Please react fast as the sender is in some kind of emergency." + "\n" + "\n" + "-- Technology is here to save you";
                     sm.sendTextMessage(num1, null, msg, null, null);
                     sm.sendTextMessage(num2, null, msg, null, null);
                     sm.sendTextMessage(num3, null, msg, null, null);
                     sm.sendTextMessage(num4, null, msg, null, null);
                     Toast.makeText(this, "Location SMS Sent to Emergency Numbers", Toast.LENGTH_SHORT).show();
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:"+num1));
+                    //callIntent.setData(Uri.parse("tel:"+num2));
+                    //callIntent.setData(Uri.parse("tel:"+num3));
+                    //callIntent.setData(Uri.parse("tel:"+num4));
+                    startActivity(callIntent);
+                    Toast.makeText(this, "Calling your Emergency Number", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Not able Find Your Location. Please Enable GPS", Toast.LENGTH_SHORT).show();
                 }
             }
-        }}
+
+        }
+        textView.setText("");
+    }
+    public void record_video(){
+
+        Intent i =new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+//        i.putExtra(MediaStore.EXTRA_DURATION_LIMIT,300);
+//        startActivityForResult(i,1);
+        File video_file = getFile();
+
+        Uri uri =  Uri.fromFile(video_file);
+
+//        i.putExtra(MediaStore.EXTRA_OUTPUT,uri);
+//        i.putExtra(MediaStore.EXTRA_VIDEO_QUALITY,1);
+
+        startActivityForResult(i,REQUEST_CODE);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+
+        if(requestCode == REQUEST_CODE){
+            if(requestCode == RESULT_OK) {
+                Toast.makeText(getApplicationContext(), "Video has been saved", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(),"ERROR, Video not saved", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
+    public File getFile(){
+
+        File folder = new File("sdcard/myFolder");
+
+        if(!folder.exists()){
+            folder.mkdir();
+        }
+
+        File video_file = new File(folder,"myVideo.mp4");
+        return video_file;
+    }
+
     }
